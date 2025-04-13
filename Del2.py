@@ -1,8 +1,12 @@
 import turtle
 from enum import Enum
 def main():
+    flagCanvasSize = [500, 500] 
     Screen = turtle.getscreen()
     Cursor = turtle.Turtle()
+    for row in Sweden.flagArray2D:
+        for index in row:
+            color = Sweden.flagColorDictionary[index]
     turtle.done()
 
 
@@ -17,19 +21,20 @@ def main():
 class Color(Enum):
     Yellow = "Yellow"
     Blue = "Blue"
-class baseFlag:
+class BaseFlag:
     flagArray2D = None
     flagColorDictionary = None
 
-class Sweden(baseFlag):
-    flagArray2D = {
-        {1,1,1,1,2,1,1,1,1,1,1,1,1,1},
-        {1,1,1,1,2,1,1,1,1,1,1,1,1,1},
-        {1,1,1,1,2,1,1,1,1,1,1,1,1,1},
-        {2,2,2,2,2,2,2,2,2,2,2,2,2,2},
-        {1,1,1,1,2,1,1,1,1,1,1,1,1,1},
-        {1,1,1,1,2,1,1,1,1,1,1,1,1,1},
-        {1,1,1,1,2,1,1,1,1,1,1,1,1,1},}
+class Sweden(BaseFlag):
+    flagArray2D = [
+        [1,1,1,1,2,1,1,1,1,1,1,1,1,1],
+        [1,1,1,1,2,1,1,1,1,1,1,1,1,1],
+        [1,1,1,1,2,1,1,1,1,1,1,1,1,1],
+        [2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+        [1,1,1,1,2,1,1,1,1,1,1,1,1,1],
+        [1,1,1,1,2,1,1,1,1,1,1,1,1,1],
+        [1,1,1,1,2,1,1,1,1,1,1,1,1,1]]
+    flagColorDictionary = {1 : Color.Blue, 2 : Color.Yellow}
     
     
 
