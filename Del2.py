@@ -1,20 +1,24 @@
 import turtle
 from enum import Enum
 def main():
+    print("skriv en flagga du vill ska ritas")
+    
+def DrawFlag(flag):
     MaxFlagSize = [150 * Sweden.flagRatio, 150]
-    print(MaxFlagSize)
-    gridSize = [MaxFlagSize[0] / Sweden.flagWidth, MaxFlagSize[1] / Sweden.flagWidth]
+    gridSize = [MaxFlagSize[0] / Sweden.flagWidth, MaxFlagSize[1] / Sweden.flagHeight]
     Screen = turtle.getscreen()
     Cursor = turtle.Turtle()
-    Cursor.goto(-MaxFlagSize[0] / 2, MaxFlagSize[1] / 2)
-    for row in Sweden.flagArray2D:
-        for index in row:
-            color = Sweden.flagColorDictionary[index].value
-            FillCube(Cursor, gridSize[0], gridSize[1], 0, 0, color)
+    Cursor.speed(50)
+    startPosition = [-MaxFlagSize[0] / 2, -MaxFlagSize[1] / 2]
+    for y in range(Sweden.flagHeight):
+        for x in range(Sweden.flagWidth):
+            color = Sweden.flagColorDictionary[Sweden.flagArray2D[y][x]].value
+            FillCube(Cursor, gridSize[0], gridSize[1], startPosition[0] + x * gridSize[0], startPosition[1] +y * gridSize[1], color)
     turtle.done()
-
 def FillCube(cursor ,Height, Width, StartX, StartY, Color):
-    print(Color)
+    CursorGoToPositionWithoutDraw(cursor, StartX, StartY)
+    cursor.color(Color)
+    cursor.begin_fill()
     cursor.fd(Width)
     cursor.rt(90)
     cursor.fd(Height)
@@ -23,7 +27,11 @@ def FillCube(cursor ,Height, Width, StartX, StartY, Color):
     cursor.rt(90)
     cursor.fd(Height)
     cursor.rt(90)
-
+    cursor.end_fill()
+def CursorGoToPositionWithoutDraw(cursor, x, y):
+    cursor.penup()
+    cursor.goto(x, y)
+    cursor.pendown()
 
 
 
