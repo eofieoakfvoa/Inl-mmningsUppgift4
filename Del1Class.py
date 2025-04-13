@@ -10,6 +10,7 @@ class BaseShape:
         self._Area = NewArea
     def GetArea(self):
         return self._Area
+    
     def _IsValidNumber(Number):
         if type(Number) != float:
             return False
@@ -21,9 +22,40 @@ class Rectangle(BaseShape):
         self.Base = base
         self.Height = height
     def CalculateArea(self):
-        self._Area = self.Base * self.Height
-    def GetArea(self):
-        return self._Area
+        self.SetArea(self.Base * self.Height)
+
+class Square(BaseShape):
+    def __init__(self, base, height): 
+        super().__init__()
+        self.Base = base
+        self.Height = height
+    def CalculateArea(self):
+        self.SetArea(self.Base * self.Height)
+
+class Triangle(BaseShape):
+    def __init__(self, base, height): 
+        super().__init__()
+        self.Base = base
+        self.Height = height
+    def CalculateArea(self):
+        self.SetArea((self.Base * self.Height) / 2)
+
+class Circle(BaseShape):
+    def __init__(self, base, height): 
+        super().__init__()
+        self.Base = base
+        self.Height = height
+    def CalculateArea(self):
+        self.SetArea(self.Base * self.Height)
+class Hexagon(BaseShape):
+    def __init__(self, base, height): 
+        super().__init__()
+        self.Base = base
+        self.Height = height
+    def CalculateArea(self):
+        self.SetArea(self.Base * self.Height)
+
+
 
 hello = Rectangle(3, 5)
 hello.CalculateArea()
